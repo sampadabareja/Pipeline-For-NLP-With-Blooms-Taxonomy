@@ -53,6 +53,7 @@ class QuestionGenerationDataset(Dataset):
         self._build()
 
     def __len__(self):
+
         return len(self.inputs)
 
     def __getitem__(self, index):
@@ -85,8 +86,10 @@ class QuestionGenerationDataset(Dataset):
 
 
             if length_of_input_encoding > self.max_len_input:
-              self.skippedcount = self.skippedcount + 1
-              continue
+
+                self.skippedcount = self.skippedcount + 1
+
+                continue
 
             tokenized_inputs = self.tokenizer.batch_encode_plus(
                 [input_], max_length=self.max_len_input, pad_to_max_length=True, return_tensors="pt"
@@ -95,6 +98,7 @@ class QuestionGenerationDataset(Dataset):
             tokenized_targets = self.tokenizer.batch_encode_plus(
                 [target], max_length=self.max_len_output, pad_to_max_length=True,return_tensors="pt"
             )
+
 
             self.inputs.append(tokenized_inputs)
             self.targets.append(tokenized_targets)
@@ -126,7 +130,9 @@ validation_dataset = QuestionGenerationDataset(t5_tokenizer,validation_path)
 
 
 class T5FineTuner(pl.LightningModule):
+
     def __init__(self,hparams, t5model, t5tokenizer):
+
         super(T5FineTuner, self).__init__()
         self.hparams = hparams
         self.model = t5model
@@ -134,6 +140,7 @@ class T5FineTuner(pl.LightningModule):
  
  
     def forward( self, input_ids, attention_mask=None, decoder_input_ids=None, decoder_attention_mask=None, lm_labels=None):
+
          outputs = self.model(
             input_ids=input_ids,
             attention_mask=attention_mask,
@@ -145,6 +152,7 @@ class T5FineTuner(pl.LightningModule):
  
  
     def training_step(self, batch, batch_idx):
+
         outputs = self.forward(
             input_ids=batch["source_ids"],
             attention_mask=batch["source_mask"],
@@ -154,10 +162,13 @@ class T5FineTuner(pl.LightningModule):
         )
  
         loss = outputs[0]
+
         self.log('train_loss',loss , prog_bar = True , logger = True)
+
         return loss
  
     def validation_step(self, batch, batch_idx):
+
         outputs = self.forward(
             input_ids=batch["source_ids"],
             attention_mask=batch["source_mask"],
@@ -167,19 +178,23 @@ class T5FineTuner(pl.LightningModule):
         )
  
         loss = outputs[0]
+
         self.log("val_loss",loss, prog_bar = True , logger = True)
+
         return loss
  
     def train_dataloader(self):
+
         return DataLoader(train_dataset, batch_size=self.hparams.batch_size,num_workers=4)
  
     def val_dataloader(self):
+
         return DataLoader(validation_dataset, batch_size=self.hparams.batch_size,num_workers=4)
  
- 
- 
     def configure_optimizers(self):
+
         optimizer = AdamW(self.parameters(), lr=3e-4, eps=1e-8)
+        
         return optimizer
 
 
