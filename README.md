@@ -16,9 +16,8 @@ The findings from this study showed that the proposed pipeline is significant in
 
 - [Squad Dataset 2.0](https://rajpurkar.github.io/SQuAD-explorer/) - Used In Question Generation Module. Released in 2018, has over 150,000 question-answer pairs.
 
-- ["Yahya et al, (2012)" Introduced Dataset](https://drive.google.com/file/d/1_YrTQJW5kTSJt0DW08KpQRA-f0ntn5Mo/view?usp=sharing) - Dataset Used in Question Classification Module.Consists of around 600 open-ended questions, covering a wide variety of questions belonging to the different levels of the cognitive domain. Original Dataset required some basic pre-processing and then manually converted into dataframe.
-</a>
-Check out main paper cited [here](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7081997/).
+- ["Yahya et al, (2012)" Introduced Dataset](https://drive.google.com/file/d/1_YrTQJW5kTSJt0DW08KpQRA-f0ntn5Mo/view?usp=sharing) - Dataset Used in Question Classification Module.Consists of around 600 open-ended questions, covering a wide variety of questions belonging to the different levels of the cognitive domain. Original Dataset required some basic pre-processing and then manually converted into dataframe. Check out main paper cited [here](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7081997/).
+
 - [Quora Question Pairs Dataset](https://www.kaggle.com/c/quora-question-pairs)- Dataset Used in Case study of computing semantic similarity between generated questions from T5 Transformer and manually annotated questions from survey form.
 
 ## Question Generation Module:
