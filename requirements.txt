@@ -6,7 +6,6 @@ sentencepiece==0.1.94
 tqdm==4.56.0
 torchtext==0.8.1
 pandas
-numpy
 scikit-learn
 argparse
 glob
