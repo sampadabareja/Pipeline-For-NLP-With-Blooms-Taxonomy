@@ -16,3 +16,14 @@ re
 torch
 termcolo
 textwrap
+google-auth==1.29.0
+google-auth-oauthlib==0.4.4
+Keras-Preprocessing==1.1.2
+Markdown==3.3.4
+nltk==3.6.2
+numpy==1.19.5
+tensorboard==2.5.0
+tensorboard-data-server==0.6.0
+tensorboard-plugin-wit==1.8.0
+tensorflow==2.4.1
+tensorflow-estimator==2.4.0
