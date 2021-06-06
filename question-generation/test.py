@@ -27,7 +27,7 @@ outputs = model.generate(
     max_length=72,
     early_stopping=True,
     num_beams=5,
-    num_return_sequences=3)   # Can decide on how many framed questions to return, can set as much as you wish
+    num_return_sequences=1)   # Can decide on how many framed questions to return, can set as much as you wish
 
 for i in outputs:
     sent = tokenizer.decode(i, skip_special_tokens=True,clean_up_tokenization_spaces=True)
